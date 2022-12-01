@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>About Login - TAskmate</title>
+{% endblock title %}
+
+{% block content %}
+    <div class="container"> 
+    </br> 
+        {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+        {% endfor %}
+        {% endif %}
+
+        <form method="POST" class="mt-5">
+            {% csrf_token %}   {% comment %} used to avoid eror when type button {% endcomment %}
+
+            {{ form|crispy }}
+        <button type="submit">Login</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% comment %} <title>Todolist Manager - TAskmate</title> {% endcomment %}
+    <!-- Bootstrap core CSS -->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {% comment %} <title>Blog Template · Bootstrap</title>
+    
+        <link rel="canonical" href="https://v5.getbootstrap.com/docs/5.0/examples/blog/"> {% endcomment %}
+
+
+    <link rel="icon" href="{% static 'images/logo.ico' %}" type="image/gif" size="16x16">
+
+    {% block title %}
+    {% endblock title %}
+
+    <nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'todolist' %}"><img src="{% static 'images/dell-logo.png' %} width="50px" height="50px" type"image/gif" alt="Taskmate" ></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                {% comment %} <a class="nav-link active" aria-current="page" href="/">Home</a> {% endcomment %}
+                <a class="nav-link active" aria-current="page" href="{% url 'todolist' %}">Home</a>
+              </li>
+
+       {% comment %}       name= todolist , name = about.....got unordered_list {% endcomment %}
+
+              <li class="nav-item">
+                {% comment %} <a class="nav-link" href="/task">Todolist</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'todolist' %}">Todolist</a>
+              </li>
+              <li class="nav-item">
+                {% comment %} <a class="nav-link" href="/task/abc">Todo List Inside</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'abc' %}">Todo List Inside</a>
+              </li>
+
+              <li class="nav-item">
+                {% comment %} <a class="nav-link" href="/task/about">About Page</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'about' %}">About Page</a>
+            </li>
+
+              <li class="nav-item">
+                {% comment %} <a class="nav-link" href="/task/contact">Contact Us</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'contact' %}">Contact Us</a> 
+              </li>
+         
+            </ul>
+        </div>
+    </div>
+    {% if user.is_authenticated %}
+    <div class="form-inline my-2 my-lg-0">
+      <div class="p-2 bg-dark text-white">Logged in as {{ user.username }}</div>
+      <a href="{% url 'logout' %}">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+      </a>
+    </div>
+    {% else %}
+    <a href="{% url 'login' %}">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+    </a>
+    <a href="{% url 'register' %}">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Register</button>
+    </a>
+    {% endif %}
+</nav>
+
+</head>
+  <body>
+    {% comment %} <h1>Hello, welcome to the Todolist App</h1> {% endcomment %}
+  
+    {% block content %}
+    {% endblock content %}
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
+  </body>
+</html>
